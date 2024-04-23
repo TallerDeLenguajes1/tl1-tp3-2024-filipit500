@@ -35,8 +35,19 @@ int main()
     //creamos el arreglo dinamico de clientess//
     Cliente *Clientes = (Cliente *)malloc(cantidadClientes*sizeof(Cliente));
     cargarClientes(Clientes,cantidadClientes);
-    mostrarClientes(Clientes,cantidadClientes);
-    costoTotal(Clientes,cantidadClientes);
+    int opcion = 1;
+    while(opcion == 1 || opcion == 2){
+        printf("1: costo total de un producto\n");
+        printf("2: mostrar Clientes\n");
+        printf("3: salir\n");
+        scanf("%d",&opcion);
+        switch(opcion){
+            case 1: costoTotal(Clientes,cantidadClientes); break;
+            case 2: mostrarClientes(Clientes,cantidadClientes); break;
+            case 3: printf("saliendo...\n"); break;
+            default: printf("no se eligio una opcion valida, saliendo...\n");
+        }
+    }
     liberarMemoria(Clientes,cantidadClientes);
     return 0;
 }
