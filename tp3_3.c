@@ -2,40 +2,27 @@
 #include <stdlib.h>
 #include <string.h>
 #define PALABRAS 5
-void mostrarPalabras(char **nombres);
-void cargarPalabras(char **nombres);
-void liberarMemoria(char **nombres);
+
 int main()
 {
-    char **nombres = malloc(PALABRAS * sizeof(char *));
-    cargarPalabras(nombres);
-    mostrarPalabras(nombres);
-    liberarMemoria(nombres);
-    return 0;
-
-}
-
-void cargarPalabras(char **nombres)
-{
-    char *buff = malloc(100 * sizeof(char));
+    char **nombres = (char **)malloc(PALABRAS * sizeof(char *));
+    char buff[50];
     for(int i = 0; i < PALABRAS; i++){
-        printf("ingrese la palabra:");
-        gets(buff);
-        nombres[i] = malloc((strlen(buff) + 1) * sizeof(char));
+        printf("ingrese un nombre:");
+        fflush(stdin);
+        scanf("%s",buff);
+        nombres[i] = (char *)malloc(strlen(buff) * sizeof(char) + 1);
         strcpy(nombres[i],buff);
     }
-    free(buff);
-}
-void mostrarPalabras(char **nombres)
-{
-    for(int i = 0; i < 5; i++){
+    for(int i = 0; i < PALABRAS; i++){
+        printf("nombre: ");
         puts(nombres[i]);
     }
-}
-void liberarMemoria(char **nombres)
-{
+    
     for(int i = 0; i < PALABRAS; i++){
         free(nombres[i]);
     }
     free(nombres);
+    return 0;
+    
 }
