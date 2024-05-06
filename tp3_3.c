@@ -17,6 +17,7 @@ int main()
     mostrarNombres(nombres,cantidadNombres);
     liberarMemoria(nombres,cantidadNombres);
     return 0;
+    //;
 }
 
 char **crearArreglo(int cantidad)
